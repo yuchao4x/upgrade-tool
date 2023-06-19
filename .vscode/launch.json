@@ -1,0 +1,51 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+                {
+                        "name": "create bundle",
+                        "type": "go",
+                        "request": "launch",
+                        "mode": "auto",
+                        "program": "${workspaceFolder}",
+                        "args": [
+                                "create",
+                                "bundle",
+                                "--log-file=stdout",
+                                "--log-level=2",
+                                "--version=4.13.0",
+                                "--arch=x86_64",
+                                "--pull-secret=/home/jhernand/pull.txt",
+                                "--output=/files/my.tar"
+                        ]
+                },
+                {
+                        "name": "start bundle-extractor",
+                        "type": "go",
+                        "request": "launch",
+                        "mode": "auto",
+                        "program": "${workspaceFolder}",
+                        "args": [
+                                "start",
+                                "bundle-extractor",
+                                "--log-file=stdout",
+                                "--log-level=2",
+                                "--node=kind-control-plane",
+                                "--bundle-file=/files/upgrade-4.13.4-x86_64.tar",
+                                "--bundle-dir=/files/upgrade"
+                        ]
+                },
+                {
+                        "name": "start controller",
+                        "type": "go",
+                        "request": "launch",
+                        "mode": "auto",
+                        "program": "${workspaceFolder}",
+                        "args": [
+                                "start",
+                                "controller",
+                                "--log-file=stdout",
+                                "--log-level=2"
+                        ]
+                }
+        ]
+}
