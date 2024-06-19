@@ -261,7 +261,7 @@ func (c *BundleCreator) createRegistry(ctx context.Context,
 	dir string) (registry *Registry, err error) {
 	registry, err = NewRegistry().
 		SetLogger(c.logger).
-		SetAddress("localhost:5001").
+		SetAddress("pws-registry.intel.lab:5000").
 		SetRoot(dir).
 		Build()
 	if err != nil {
