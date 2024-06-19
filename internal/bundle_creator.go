@@ -204,6 +204,7 @@ func (c *BundleCreator) Run(ctx context.Context) error {
 	// Download the images:
 	err = c.downloadImages(registry, release, images)
 	if err != nil {
+		c.console.Info("registry：%s，release: %s, img: %s", registry, release, images)
 		c.console.Error("Failed to download images: %v", err)
 		return exit.Error(1)
 	}
