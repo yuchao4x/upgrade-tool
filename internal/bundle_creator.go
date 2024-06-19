@@ -194,12 +194,12 @@ func (c *BundleCreator) Run(ctx context.Context) error {
 	)
 
 	// Create the registry:
-	c.console.Info("Starting registry ...")
-	registry, err := c.createRegistry(ctx, tmpDir)
-	if err != nil {
-		c.console.Error("Failed to start registry: %v", err)
-		return exit.Error(1)
-	}
+	//c.console.Info("Starting registry ...")
+	//registry, err := c.createRegistry(ctx, tmpDir)
+	//if err != nil {
+	//	c.console.Error("Failed to start registry: %v", err)
+	//	return exit.Error(1)
+	//}
 
 	// Download the images:
 	err = c.downloadImages(registry, release, images)
