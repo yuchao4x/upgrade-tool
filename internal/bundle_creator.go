@@ -379,6 +379,7 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 		)
 		dst, err := c.dstRef(ref, registry)
 		if err != nil {
+			c.console.Info("dstRef error,%s", dst)
 			return err
 		}
 		err = c.downloadImage(certs, ref, dst)
@@ -392,7 +393,6 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 func (c *BundleCreator) dstRef(src string, registry *Registry) (dst string, err error) {
 	ref, err := dreference.ParseNamed(src)
 	if err != nil {
-		c.console.Info("ParseNamed error,$s", ref)
 		return
 	}
 	path := dreference.Path(ref)
