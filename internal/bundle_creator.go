@@ -365,7 +365,6 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 	c.console.Info("Downloading release image '%s' ...", release)
 	err = c.downloadImage(certs, release, dst)
 	if err != nil {
-		c.console.Info("=====================11111111111111111111111111111111")
 		return err
 	}
 
@@ -393,6 +392,7 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 func (c *BundleCreator) dstRef(src string, registry *Registry) (dst string, err error) {
 	ref, err := dreference.ParseNamed(src)
 	if err != nil {
+		c.console.Info("ParseNamed error,$s", ref)
 		return
 	}
 	path := dreference.Path(ref)
@@ -430,8 +430,6 @@ func (c *BundleCreator) downloadImage(certs string, src, dst string) error {
 		Stderr: stderr,
 	}
 	err = cmd.Run()
-	c.console.Info("%v", err)
-	c.console.Info("=====================2222222222222222222222222222222222222222")
 	c.logger.Info(
 		"Executed 'skopeo' command",
 		"args", cmd.Args,
