@@ -204,7 +204,6 @@ func (c *BundleCreator) Run(ctx context.Context) error {
 	// Download the images:
 	err = c.downloadImages(registry, release, images)
 	if err != nil {
-		c.console.Info("registry：%s，release: %s, img: %s", registry, release, images)
 		c.console.Error("Failed to download images: %v", err)
 		return exit.Error(1)
 	}
@@ -366,6 +365,7 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 	c.console.Info("Downloading release image '%s' ...", release)
 	err = c.downloadImage(certs, release, dst)
 	if err != nil {
+		c.console.Info("=====================11111111111111111111111111111111")
 		return err
 	}
 
@@ -430,6 +430,8 @@ func (c *BundleCreator) downloadImage(certs string, src, dst string) error {
 		Stderr: stderr,
 	}
 	err = cmd.Run()
+	c.console.Info("%v", err)
+	c.console.Info("=====================2222222222222222222222222222222222222222")
 	c.logger.Info(
 		"Executed 'skopeo' command",
 		"args", cmd.Args,
