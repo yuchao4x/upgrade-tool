@@ -379,13 +379,14 @@ func (c *BundleCreator) downloadImages(registry *Registry, release string,
 		)
 		dst, err := c.dstRef(ref, registry)
 		if err != nil {
-			c.console.Info("dstRef error,%s", dst)
 			return err
 		}
+		c.console.Info("dstRef finish,%s", dst)
 		err = c.downloadImage(certs, ref, dst)
 		if err != nil {
 			return err
 		}
+		c.console.Info("downloadImage finish,%v", err)
 	}
 	return nil
 }
